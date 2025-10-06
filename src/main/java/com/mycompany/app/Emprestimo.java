@@ -1,3 +1,5 @@
+package com.mycompany.app;
+
 import java.time.LocalDateTime;
 
 public class Emprestimo {
@@ -14,8 +16,8 @@ public class Emprestimo {
         this.dataRetirada = LocalDateTime.now();
         this.dataDevolucao = null;
 
-        livro.setDisponivel(false);       
-        usuario.adicionarEmprestimo(this); 
+        livro.setDisponivel(false);
+        usuario.adicionarEmprestimo(this);
     }
 
     public Livro getLivro() { return livro; }
@@ -32,7 +34,7 @@ public class Emprestimo {
         livro.setDisponivel(true);
     }
 
-    public boolean verificarAtraso() {
+    public boolean verificaAtraso() {
         if (dataDevolucao == null) return false;
         return dataDevolucao.isAfter(getDataPrevistaDevolucao());
     }
