@@ -1,3 +1,5 @@
+package com.mycompany.app;
+
 public class Livro {
     private String titulo;
     private String genero;
@@ -8,7 +10,7 @@ public class Livro {
         this.titulo = titulo;
         this.genero = genero;
         this.autor = autor;
-        this.disponivel = true; 
+        this.disponivel = true;
     }
 
     public String getTitulo() { return titulo; }
