@@ -3,7 +3,7 @@ package com.mycompany.app;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import com.mycompany.app.strategy.EstrategiaPublicacao; 
+import com.mycompany.app.Interface.PublicavelInterface;
 
 public class Autor extends Pessoa {
 
@@ -12,8 +12,7 @@ public class Autor extends Pessoa {
     private String nacionalidade;
     private TipoAutor tipo;
     private List<Livro> obrasPublicadas;
-
-    private EstrategiaPublicacao estrategiaPublicacao;
+    private PublicavelInterface estrategiaPublicacao;
 
     public Autor(String nome, String nacionalidade) {
         this(nome, nacionalidade, TipoAutor.TRADICIONAL);
@@ -52,7 +51,7 @@ public class Autor extends Pessoa {
         }
     }
 
-    public void setEstrategiaPublicacao(EstrategiaPublicacao estrategia) {
+    public void setEstrategiaPublicacao(PublicavelInterface estrategia) {
         this.estrategiaPublicacao = estrategia;
     }
 
