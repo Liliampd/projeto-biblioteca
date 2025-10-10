@@ -3,6 +3,7 @@ package com.mycompany.app;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import com.mycompany.app.strategy.EstrategiaPublicacao; 
 
 public class Autor extends Pessoa {
 
@@ -12,12 +13,12 @@ public class Autor extends Pessoa {
     private TipoAutor tipo;
     private List<Livro> obrasPublicadas;
 
-    // Construtor "padrão": assume TRADICIONAL
+    private EstrategiaPublicacao estrategiaPublicacao;
+
     public Autor(String nome, String nacionalidade) {
         this(nome, nacionalidade, TipoAutor.TRADICIONAL);
     }
 
-    // Construtor completo
     public Autor(String nome, String nacionalidade, TipoAutor tipo) {
         super(nome);
         this.nacionalidade = nacionalidade;
@@ -41,16 +42,25 @@ public class Autor extends Pessoa {
         this.tipo = tipo;
     }
 
-    /** Retorna uma lista imutável para não expor a coleção interna. */
     public List<Livro> getObrasPublicadas() {
         return Collections.unmodifiableList(obrasPublicadas);
     }
 
-    /** Adiciona um livro à lista de obras publicadas do autor. */
     public void adicionarObra(Livro livro) {
         if (livro != null) {
             obrasPublicadas.add(livro);
         }
+    }
+
+    public void setEstrategiaPublicacao(EstrategiaPublicacao estrategia) {
+        this.estrategiaPublicacao = estrategia;
+    }
+
+    public String publicar() {
+        if (estrategiaPublicacao == null) {
+            throw new IllegalStateException("Estratégia de publicação não definida.");
+        }
+        return estrategiaPublicacao.publicar();
     }
 
     @Override
